@@ -1,0 +1,9 @@
+li{list-style: none;}
+
+ul{ display: flex;
+    justify-content: space-between;
+}
+
+.categorias{  text-decoration: none;
+              color: rgb(206, 171, 240);
+}
