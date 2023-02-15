@@ -1,0 +1,9 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+.pagina-principal {
+    background: linear-gradient(90deg, rgba(148,12,237,1) 8%, rgba(238,6,225,1) 92%);
+}
