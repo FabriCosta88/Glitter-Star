@@ -1,33 +1,47 @@
-import { FormControl, FormLabel, Input, Button, Center, Heading, Container, Box, Textarea} from "@chakra-ui/react";
-import React from "react";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { CartContext } from "../contexts/ShoppingCartContext";
+import { Container, Center, Text, Heading, Button, Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react';
+import Tabla from "./Tabla";
+import CheckOut from "./CheckOut";
 import '../components/Css/Cart.css'
 
 const Cart = () => {
+  const [cart, setCart] = useContext(CartContext);
+
+  const mensajeCondicional = (
+    <Card align='center'>
+      <CardHeader>
+        <Heading size='md'> Oops!</Heading>
+      </CardHeader>
+      <CardBody>
+        <Text>¡Tu carrito esta vacio!</Text>
+        <Text>Ve al store para elegir algun producto</Text>
+      </CardBody>
+      <CardFooter>
+        <Link to="/catalogo">
+          <Button colorScheme='blue'>Glitter Store</Button>
+        </Link>
+      </CardFooter>
+    </Card>
+  )
+
   return (
-    <div className="carrito">
-    <Center bg="#A9A9A9" h="100px" color="white">
-      <Heading as="h2" size="2xl">
-        Carrito
-      </Heading>
-    </Center>
-    <Container className="contenedor-carrito">
-      <FormControl>
-        <Box>
-          <FormLabel>Nombre</FormLabel>
-          <Input type="text" />
-          <FormLabel>Direccion de E-Mail</FormLabel>
-          <Input type="email" />
-        </Box>
-        <FormLabel>Dejanos tu consulta</FormLabel>
-        <Textarea></Textarea>
-        <Box className="boton-enviar">
-          <Button colorScheme="teal" variant="outline">
-            Enviar Consulta
-          </Button>
-        </Box>
-      </FormControl>
-    </Container>
-  </div>
+    <>
+      <Center bg="#D6EAF8" h="100px" color="black">
+        <Heading as="h2" size="2xl">
+          Carrito
+        </Heading>
+      </Center>
+      {cart.length === 0 ? (
+        mensajeCondicional
+      ) : (
+        <div>
+          <Tabla />
+          <CheckOut />
+        </div>
+      )}
+    </>
   );
 };
 

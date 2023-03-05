@@ -1,3 +1,17 @@
+.tarjeta-detalle{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.info-detalle{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
 .tarjeta-detalle-footer{
     display: flex;
     flex-direction: row;

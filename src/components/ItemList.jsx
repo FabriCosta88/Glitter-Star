@@ -5,7 +5,7 @@ import '../components/Css/ItemList.css'
 const ItemList = ({glitters}) => {
   return (
     <>
-      <Container maxW="5xl" className="catalogo-principal">
+      <Container maxW="9xl" className="catalogo-principal">
         {glitters?.map((glitter) =>(
           <Item
           key={glitter.id}

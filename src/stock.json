@@ -6,7 +6,7 @@
         "descripcion": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum deleniti aut dignissimos explicabo ab, cumque eligendi ducimus numquam quibusdam minima",
         "stock": 100,
         "category": "Producto",
-        "img": "./assets/productos/gemas.jpg"
+        "img": "../public/productos/gemas.jpg"
         
     },
     {
@@ -16,7 +16,7 @@
         "descripcion": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum deleniti aut dignissimos explicabo ab, cumque eligendi ducimus numquam quibusdam minima",
         "stock": 100,
         "category": "Producto",
-        "img": "./assets/productos/glitter-gel.jpg"
+        "img": "../public/productos/glitter-gel.jpg"
     },
     {
         "id": 3,
@@ -25,7 +25,7 @@
         "descripcion": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum deleniti aut dignissimos explicabo ab, cumque eligendi ducimus numquam quibusdam minima",
         "stock": 80,
         "category": "Producto",
-        "img": "./assets/productos/glitter-neon.jpg"
+        "img": "../public/productos/glitter-neon.jpg"
     },
     {
         "id": 4,
@@ -34,7 +34,7 @@
         "descripcion": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum deleniti aut dignissimos explicabo ab, cumque eligendi ducimus numquam quibusdam minima",
         "stock": 1,
         "category": "Servicio",
-        "img": "./assets/productos/stand.jpg"
+        "img": "../public/productos/stand.jpg"
     },
     {
         "id": 5,
@@ -43,7 +43,7 @@
         "descripcion": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum deleniti aut dignissimos explicabo ab, cumque eligendi ducimus numquam quibusdam minima",
         "stock": 1,
         "category": "Servicio",
-        "img": "./assets/productos/glitter-360.png"
+        "img": "../public/productos/glitter-360.png"
     },
     {
         "id": 6,
@@ -52,7 +52,7 @@
         "descripcion": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum deleniti aut dignissimos explicabo ab, cumque eligendi ducimus numquam quibusdam minima",
         "stock": 30,
         "category": "Promocion",
-        "img": "./assets/productos/gemas-glitter.jpg"
+        "img": "../public/productos/gemas-glitter.jpg"
     },
     {
         "id": 7,
@@ -61,7 +61,7 @@
         "descripcion": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum deleniti aut dignissimos explicabo ab, cumque eligendi ducimus numquam quibusdam minima",
         "stock": 45,
         "category": "Promocion",
-        "img": "./assets/productos/glitter-neon-unas.jpg"
+        "img": "../public/productos/glitter-neon-unas.jpg"
     },
     {
         "id": 8,
@@ -70,6 +70,6 @@
         "descripcion": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum deleniti aut dignissimos explicabo ab, cumque eligendi ducimus numquam quibusdam minima",
         "stock": 1,
         "category": "Promocion",
-        "img": "./assets/logo-glitter.jpg"
+        "img": "../public/logo-glitter.jpg"
     }
 ]

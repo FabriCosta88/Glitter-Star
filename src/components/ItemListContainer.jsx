@@ -1,57 +1,39 @@
 
 import ItemList from "./ItemList";
-import Stock from "../stock.json";
 import { useParams } from "react-router-dom";
 import { Heading, Center } from "@chakra-ui/react";
+import { useState, useEffect } from "react";
+import { collection, getDocs, getFirestore, QuerySnapshot } from "firebase/firestore";
 
 const ItemListContainer = () => {
+  const [glitters, setGlitters] = useState([]);
   const { category } = useParams();
-  console.log(category)
 
-  const getDatos = () => {
-    return new Promise((resolve, rejet) =>{
-      if (Stock.length === 0) {
-        rejet(new Error("No hay datos"));
-      }
-      setTimeout(() =>{
-        resolve(Stock);
-      }, 2000);
+
+  useEffect(() => {
+    const db = getFirestore();
+    const coleccionGlitters = collection(db, "glitters");
+    getDocs(coleccionGlitters).then((QuerySnapshot) => {
+      const glitters = QuerySnapshot.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      setGlitters(glitters);
     });
-  };
+  }, []);
 
-  async function fetchingStock() {
-    try {
-      const datosFetched = await getDatos();
-    } catch (err) {
-      console.log(err);
-    }
-  }
-  fetchingStock();
+const catFilter = glitters.filter((glitter) => glitter.category === category);
 
-  if (category === undefined) {
-    return (
-      <div>
-        <Center bg="#A9A9A9" h="100px" color="white">
-          <Heading as="h2" size="2xl">
-            Glitter Store
-          </Heading>
-        </Center>
-        <ItemList glitters={Stock}></ItemList>
-      </div>
-    )
-  } else {
-    const catFilter = Stock.filter((glitter) => glitter.category === category);
-    return (
-      <div>
-        <Center bg="#A9A9A9" h="100px" color="white">
-          <Heading as="h2" size="2xl">
-            Categorias
-          </Heading>
-        </Center>
-        {catFilter ? <ItemList glitters={catFilter} /> : <ItemList glitters={Stock} /> }
-      </div>
-    )
-  }
-} 
+return (
+  <>
+  <Center bg="#D6EAF8" h="100px" color="black">
+    <Heading as="h2" size="2xl">
+      Catalogo
+    </Heading>
+  </Center>
+    {category ? <ItemList glitters={catFilter} /> : <ItemList glitters={glitters} />}
+  </>
+);
+};
 
 export default ItemListContainer

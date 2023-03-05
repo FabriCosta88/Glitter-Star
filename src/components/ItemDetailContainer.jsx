@@ -1,31 +1,24 @@
 import ItemDetail from "./ItemDetail";
-import Stock from "../stock.json";
+import { useState, useEffect } from "react";
+import { getFirestore, collection, getDocs, QuerySnapshot } from "firebase/firestore";
 
 const ItemDetailContainer = () => {
-  const getDatos = () => {
-
-    return new Promise((resolve, rejet) =>{
-      if (Stock.length === 0) {
-        rejet(new Error("No hay datos"));
-      }
-      setTimeout(() => {
-        resolve(Stock);
-      }, 2000);
+  const [data, setData] = useState ([]);
+  useEffect(() => {
+    const db = getFirestore();
+    const coleccionGlitters = collection(db, "glitters");
+    getDocs(coleccionGlitters).then((querySnapshot) => {
+      const glitters = querySnapshot.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      setData(glitters);
     });
-  };
-
-  async function fetchingData() {
-    try {
-      const datosFetched = await getDatos();
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
-  fetchingData();
+  }, []);
+  
   return (
     <>
-      <ItemDetail glitters={Stock}></ItemDetail>
+      <ItemDetail glitters={data}></ItemDetail>
     </>
   );
 };
