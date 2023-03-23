@@ -4,13 +4,14 @@ import ItemDetailContainer from "./components/ItemDetailContainer";
 import Cart from "./components/Cart"
 import NavBar from "./components/NavBar";
 import Form from "./components/Form";
+import CheckOut from "./components/CheckOut"
 import Home from "./components/Home"
-import { ShoppingCartProvider } from "./contexts/ShoppingCartContext";
+import { CartProvider } from "./contexts/CartContext";
 
 
 function App() {
   return (
-    <ShoppingCartProvider>
+    <CartProvider>
       <BrowserRouter>
         <NavBar />
         <Routes>
@@ -19,10 +20,11 @@ function App() {
           <Route exact path="/categorias/:category" element={<ItemListContainer />}/>
           <Route exact path="/item/:id" element={<ItemDetailContainer />}/>
           <Route exact path="/form" element={<Form/>} />
+          <Route exact path="/checkout" element={<CheckOut />} />
           <Route exact path="/cart" element={<Cart />}/>
         </Routes>
       </BrowserRouter>
-    </ShoppingCartProvider>
+    </CartProvider>
 
   )
 };

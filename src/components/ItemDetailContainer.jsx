@@ -1,24 +1,26 @@
 import ItemDetail from "./ItemDetail";
+import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getFirestore, collection, getDocs, QuerySnapshot } from "firebase/firestore";
+import { doc, getDoc, getFirestore } from "firebase/firestore";
+
 
 const ItemDetailContainer = () => {
-  const [data, setData] = useState ([]);
+  const [productos, setProductos] = useState ("");
+  const { id } = useParams();
+
   useEffect(() => {
     const db = getFirestore();
-    const coleccionGlitters = collection(db, "glitters");
-    getDocs(coleccionGlitters).then((querySnapshot) => {
-      const glitters = querySnapshot.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      }));
-      setData(glitters);
+    const Glitters = doc(db, "glitters", `${id}`);
+    getDoc(Glitters).then((snapshot) => {
+      if (snapshot.exists()) {
+        setProductos(snapshot.data());
+      }
     });
   }, []);
   
   return (
     <>
-      <ItemDetail glitters={data}></ItemDetail>
+      <ItemDetail glitters={productos}></ItemDetail>
     </>
   );
 };
